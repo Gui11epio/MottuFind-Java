@@ -1,9 +1,14 @@
 package br.com.fiap.sprint1.dto;
 
-public record LeitorRfidResponse(
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-        String localizacao,
-        String ipDispositivo,
-        Long patioId
-) {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class LeitorRfidResponse{
+    private String localizacao;
+    private String ipDispositivo;
+    private Long patioId;
 }

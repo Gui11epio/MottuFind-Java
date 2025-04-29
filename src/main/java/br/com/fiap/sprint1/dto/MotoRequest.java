@@ -18,9 +18,6 @@ public class MotoRequest {
     private String marca;
 
     @NotBlank
-    private String cor;
-
-    @NotBlank
     private String status;
 
     @NotNull

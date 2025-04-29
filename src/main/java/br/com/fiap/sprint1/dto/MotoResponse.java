@@ -1,12 +1,16 @@
 package br.com.fiap.sprint1.dto;
 
-public record MotoResponse(
-        String placa,
-        String modelo,
-        String cor,
-        String status,
-        Long patioId,
-        Long tagId
-) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class MotoResponse{
+    private String placa;
+    private String modelo;
+    private String status;
+    private Long patioId;
+    private Long tagId;
 }

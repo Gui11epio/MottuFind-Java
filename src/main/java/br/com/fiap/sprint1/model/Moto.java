@@ -9,8 +9,7 @@ public class Moto {
 
     private String modelo;
     private String marca;
-    private String cor;
-    private String status;
+    private String status; // ligado, desligado, manutenção, disponivel
 
     @ManyToOne
     private Patio patio;
@@ -21,11 +20,10 @@ public class Moto {
     public Moto() {
     }
 
-    public Moto(String placa, String modelo, String marca, String cor, String status, Patio patio, TagRfid tag) {
+    public Moto(String placa, String modelo, String marca,String status, Patio patio, TagRfid tag) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
-        this.cor = cor;
         this.status = status;
         this.patio = patio;
         this.tag = tag;
@@ -45,14 +43,6 @@ public class Moto {
 
     public void setMarca(String marca) {
         this.marca = marca;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
     }
 
     public String getStatus() {
