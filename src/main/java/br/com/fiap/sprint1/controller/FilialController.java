@@ -29,7 +29,7 @@ public class FilialController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FilialResponse> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<FilialResponse> buscarPorId(@PathVariable("id") Long id) {
         return ResponseEntity.ok(filialService.buscarPorId(id));
     }
 

@@ -32,18 +32,20 @@ public class MotoService {
         Patio patio = patioRepository.findById(dto.getPatioId())
                 .orElseThrow(() -> new EntityNotFoundException("Pátio não encontrado"));
 
-        TagRfid tag = tagRfidRepository.findById(dto.getTagId())
-                .orElseThrow(() -> new EntityNotFoundException("Tag RFID não encontrada"));
-
         if (motoRepository.existsById(dto.getPlaca())) {
             throw new IllegalArgumentException("Moto já cadastrada com esta placa");
         }
+
+        // Criação automática da tag
+        TagRfid tag = new TagRfid();
+        tag.setCodigoIdentificacao("TAG-" + dto.getPlaca()); // ou UUID.randomUUID().toString()
+        tag.setAtiva(true);
 
         moto.setPatio(patio);
         moto.setTag(tag);
         tag.setMoto(moto);
 
-        Moto saved = motoRepository.save(moto);
+        Moto saved = motoRepository.save(moto); // salva moto + tag em cascata
         return modelMapper.map(saved, MotoResponse.class);
     }
 

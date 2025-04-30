@@ -32,7 +32,7 @@ public class MotoController {
     }
 
     @GetMapping("/{placa}")
-    public ResponseEntity<MotoResponse> buscarPorPlaca(@PathVariable String placa) {
+    public ResponseEntity<MotoResponse> buscarPorPlaca(@PathVariable("placa") String placa) {
         return ResponseEntity.ok(motoService.buscarPorPlaca(placa));
     }
 

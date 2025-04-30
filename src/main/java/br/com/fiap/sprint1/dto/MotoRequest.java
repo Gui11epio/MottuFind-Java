@@ -3,10 +3,12 @@ package br.com.fiap.sprint1.dto;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.antlr.v4.runtime.misc.NotNull;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class MotoRequest {
     @NotBlank
     private String placa;

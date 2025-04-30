@@ -29,7 +29,7 @@ public class PatioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PatioResponse> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<PatioResponse> buscarPorId(@PathVariable("id") Long id) {
         return ResponseEntity.ok(patioService.buscarPorId(id));
     }
 
