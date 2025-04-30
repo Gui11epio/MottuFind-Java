@@ -3,6 +3,11 @@ Guilherme Camasmie Laiber de Jesus,
 Pedro Manzo Yokoo,
 Fernando Fernandes Prado
 
+#LINK PARA O SWAGGER
+``
+http://localhost:8080/swagger-ui/index.html#/
+``
+
 
 #Json para testes
 
