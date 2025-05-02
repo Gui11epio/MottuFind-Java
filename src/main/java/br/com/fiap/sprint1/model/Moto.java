@@ -7,9 +7,11 @@ public class Moto {
     @Id
     private String placa; // um exemplo: ABC-1234
 
-    private String modelo;
+    private MotoModelo modelo;
     private String marca;
-    private String status; // ligado, desligado, manutenção, disponivel
+
+    @Enumerated(EnumType.STRING)
+    private MotoStatus status;
 
     @ManyToOne
     private Patio patio;
@@ -20,7 +22,7 @@ public class Moto {
     public Moto() {
     }
 
-    public Moto(String placa, String modelo, String marca,String status, Patio patio, TagRfid tag) {
+    public Moto(String placa, MotoModelo modelo, String marca, MotoStatus status, Patio patio, TagRfid tag) {
         this.placa = placa;
         this.modelo = modelo;
         this.marca = marca;
@@ -29,11 +31,19 @@ public class Moto {
         this.tag = tag;
     }
 
-    public String getModelo() {
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public MotoModelo getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    public void setModelo(MotoModelo modelo) {
         this.modelo = modelo;
     }
 
@@ -45,11 +55,11 @@ public class Moto {
         this.marca = marca;
     }
 
-    public String getStatus() {
+    public MotoStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(MotoStatus status) {
         this.status = status;
     }
 
@@ -67,13 +77,5 @@ public class Moto {
 
     public void setTag(TagRfid tag) {
         this.tag = tag;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public String getPlaca() {
-        return placa;
     }
 }

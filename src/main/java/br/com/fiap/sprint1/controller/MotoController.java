@@ -54,7 +54,7 @@ public class MotoController {
         return ResponseEntity.ok(motoService.listarMotos(pageable));
     }
 
-    @Operation(summary = "Retorna um jogo pela Placa")
+    @Operation(summary = "Retorna uma moto pela Placa")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Moto encontrada com sucesso",
                     content = {@Content(mediaType = "application/json",

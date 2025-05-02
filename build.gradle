@@ -23,6 +23,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.modelmapper:modelmapper:3.1.1'
     implementation 'com.oracle.database.jdbc:ojdbc11'
