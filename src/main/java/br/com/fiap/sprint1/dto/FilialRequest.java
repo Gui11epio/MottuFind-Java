@@ -1,5 +1,6 @@
 package br.com.fiap.sprint1.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -18,6 +19,7 @@ public class FilialRequest {
             regexp = "^[A-Za-zÀ-ÿ0-9\\s\\-]+$",
             message = "O nome da filial deve conter apenas letras, números, espaços e traços."
     )
+    @Schema(example = "Unidade Rio de Janeiro", description = "Nome da filial")
     private String nome;
 
     @NotBlank(message = "a cidade da filial é obrigatório")
@@ -25,6 +27,7 @@ public class FilialRequest {
             regexp = "^[A-Za-zÀ-ÿ\\s]+$",
             message = "A cidade deve conter apenas letras e espaços."
     )
+    @Schema(example = "Rio de Janeiro", description = "Cidade da filial")
     private String cidade;
 
     @NotBlank(message = "O país da filial é obrigatório")
@@ -32,5 +35,6 @@ public class FilialRequest {
             regexp = "^[A-Za-zÀ-ÿ\\s]+$",
             message = "O país deve conter apenas letras e espaços."
     )
+    @Schema(example = "Brasil", description = "País da filial")
     private String pais;
 }

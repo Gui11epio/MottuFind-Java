@@ -9,6 +9,9 @@ import br.com.fiap.sprint1.repository.PatioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -40,12 +43,14 @@ public class PatioService {
                 .map(p -> modelMapper.map(p, PatioResponse.class));
     }
 
+    @Cacheable(value = "patios", key = "#id")
     public PatioResponse buscarPorId(Long id) {
         Patio patio = patioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Pátio não encontrado"));
         return modelMapper.map(patio, PatioResponse.class);
     }
 
+    @CachePut(value = "patios", key = "#id")
     public PatioResponse atualizar(Long id, PatioRequest dto) {
         Patio patio = patioRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Pátio não encontrado"));
@@ -62,6 +67,7 @@ public class PatioService {
         return modelMapper.map(patio, PatioResponse.class);
     }
 
+    @CacheEvict(value = "patios", key = "#id")
     public void deletar(Long id) {
         if (!patioRepository.existsById(id)) {
             throw new EntityNotFoundException("Pátio não encontrado");

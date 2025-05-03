@@ -11,6 +11,9 @@ import br.com.fiap.sprint1.repository.TagRfidRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,6 +29,7 @@ public class MotoService {
     private final TagRfidRepository tagRfidRepository;
     private final ModelMapper modelMapper;
 
+    @CachePut(value = "motos", key = "#dto.placa")
     public MotoResponse criarMoto(MotoRequest dto) {
         Moto moto = modelMapper.map(dto, Moto.class);
 
@@ -54,12 +58,14 @@ public class MotoService {
                 .map(moto -> modelMapper.map(moto, MotoResponse.class));
     }
 
+    @Cacheable(value = "motos", key = "#placa")
     public MotoResponse buscarPorPlaca(String placa) {
         Moto moto = motoRepository.findById(placa)
                 .orElseThrow(() -> new EntityNotFoundException("Moto não encontrada"));
         return modelMapper.map(moto, MotoResponse.class);
     }
 
+    @CachePut(value = "motos", key = "#placa")
     public MotoResponse atualizarMoto(String placa, MotoRequest dto) {
         Moto moto = motoRepository.findById(placa)
                 .orElseThrow(() -> new EntityNotFoundException("Moto não encontrada"));
@@ -80,6 +86,7 @@ public class MotoService {
         return modelMapper.map(atualizado, MotoResponse.class);
     }
 
+    @CacheEvict(value = "motos", key = "#placa")
     public void deletarMoto(String placa) {
         if (!motoRepository.existsById(placa)) {
             throw new EntityNotFoundException("Moto não encontrada");
