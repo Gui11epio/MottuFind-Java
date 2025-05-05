@@ -1,5 +1,4 @@
-Grupo:
-Guilherme Camasmie Laiber de Jesus, Pedro Manzo Yokoo, Fernando Fernandes Prado
+Grupo: Guilherme Camasmie Laiber de Jesus, Pedro Manzo Yokoo, Fernando Fernandes Prado
 
 # 📦 Sprint1 - API de Java
 
