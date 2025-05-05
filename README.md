@@ -1,48 +1,27 @@
 Grupo:
-Guilherme Camasmie Laiber de Jesus,
-Pedro Manzo Yokoo,
-Fernando Fernandes Prado
+Guilherme Camasmie Laiber de Jesus, Pedro Manzo Yokoo, Fernando Fernandes Prado
 
-#LINK PARA O SWAGGER
-``
-http://localhost:8080/swagger-ui/index.html#/
-``
+# 📦 Sprint1 - API de Java
+
+Este projeto é uma API REST desenvolvida com **Spring Boot** para o gerenciamento e monitoramento de motos. Ela permite operações típicas como cadastro, listagem e controle de dados relacionados.
+
+## 🚀 Tecnologias Utilizadas
+
+- Java 17+
+- Spring Boot
+- Gradle
+- Spring Data JPA
+- H2 Database (ou outro, se configurado)
+- Swagger/OpenAPI
+- ModelMapper
+- Spring Cache
+
+## 📄 Documentação da API
+
+A documentação interativa pode ser acessada via Swagger em: http://localhost:8080/swagger-ui/index.html#/
 
 
-#Json para testes
 
-A ordem de criação para testes: Filial -> Pátio -> Moto
-
-Filial:
-``
-{
-"nome": "Unidade São Paulo",
-"cidade": "São Paulo",
-"pais": "Brasil"
-}
-``
-
-Pátio:
-``
-{
-"nome": "Pátio Central",
-"largura": 50.0,
-"comprimento": 100.0,
-"filialId": 1
-}
-``
-
-Moto:
-``
-{
-"placa": "ABC1234",
-"modelo": "CG 160 Fan",
-"marca": "Honda",
-"cor": "Preta",
-"status": "disponivel",
-"patioId": 1
-}
-``
 
 
 
