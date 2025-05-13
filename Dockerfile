@@ -1,3 +1,4 @@
+
 FROM gradle:8.7-jdk18 AS builder
 WORKDIR /app
 COPY . .
