@@ -1,0 +1,27 @@
+# Variáveis
+RESOURCE_GROUP="rg-java-vm"
+VM_NAME="java-vm"
+LOCATION="brazilsouth"
+IMAGE="almalinux:almalinux-arm:9-arm-gen2:latest"
+ADMIN_USER="azureuser"
+ADMIN_PASSWORD="Fiap@2tdsvms"
+
+# Criar grupo de recursos
+az group create --name $RESOURCE_GROUP --location $LOCATION
+
+# Criar a máquina virtual
+az vm create \
+  --resource-group $RESOURCE_GROUP \
+  --name $VM_NAME \
+  --image $IMAGE \
+  --authentication-type password \
+  --admin-username $ADMIN_USER \
+  --admin-password $ADMIN_PASSWORD \
+  --size Standard_B1ms \
+  --output json
+
+# Abrir portas 22 (SSH) e 8080 (Web)
+az vm open-port --resource-group $RESOURCE_GROUP --name $VM_NAME --port 22
+az vm open-port --resource-group $RESOURCE_GROUP --name $VM_NAME --port 8080
+
+
