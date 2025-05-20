@@ -2,7 +2,7 @@
 RESOURCE_GROUP="rg-java-vm"
 VM_NAME="java-vm"
 LOCATION="brazilsouth"
-IMAGE="almalinux:almalinux-arm:9-arm-gen2:latest"
+IMAGE="almalinux:almalinux:9-gen2:latest"
 ADMIN_USER="azureuser"
 ADMIN_PASSWORD="Fiap@2tdsvms"
 VM_SIZE="Standard_B2s"
