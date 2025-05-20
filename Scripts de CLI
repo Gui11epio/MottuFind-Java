@@ -2,10 +2,10 @@
 RESOURCE_GROUP="rg-java-vm"
 VM_NAME="java-vm"
 LOCATION="brazilsouth"
-IMAGE="almalinux:almalinux:9-gen2:latest"
+IMAGE="almalinux:almalinux-x86_64:9-gen2:9.2.2023072701"
 ADMIN_USER="azureuser"
 ADMIN_PASSWORD="Fiap@2tdsvms"
-VM_SIZE="Standard_B2s"
+VM_SIZE="Standard_B1ms"
 OS_DISK_SIZE=30  # GiB
 
 # 1. Criar grupo de recursos
