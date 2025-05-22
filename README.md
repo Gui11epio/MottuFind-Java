@@ -65,7 +65,7 @@ Crie uma nova filial com os dados como nome, cidade, etc.
 
 - Endpoint: GET /api/filiais
 
-Pega as filiais por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort**
+Pega as filiais por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort** e mude o valor de **size** caso tenha mais de uma filial cadastrada
 
 🚧 Pátio
 
@@ -75,7 +75,7 @@ Cada pátio deve estar vinculado a uma filial existente.
 
 - Endpoint: GET /api/patios
 
-Pega os patios por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort**
+Pega os patios por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort** e mude o valor de **size** caso tenha mais de um pátio cadastrado
 
 
 🏍️ Moto
@@ -86,7 +86,7 @@ Cada moto deve estar associada a um pátio existente, que por sua vez está vinc
 
 - Endpoint: GET /api/patios
 
-Pega as motos por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort**
+Pega as motos por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort** e mude o valor de **size** caso tenha mais de uma moto cadastrada
 
 
 ## ✅ Validações dos Dados
