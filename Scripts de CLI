@@ -1,17 +1,14 @@
-# Variáveis
 RESOURCE_GROUP="rg-java-vm"
 VM_NAME="java-vm"
 LOCATION="brazilsouth"
-IMAGE="almalinux:almalinux-x86_64:9-gen2:9.2.2023072701"
+IMAGE="almalinux:almalinux-x86_64:9-gen2:9.5.202411260"
 ADMIN_USER="azureuser"
 ADMIN_PASSWORD="Fiap@2tdsvms"
 VM_SIZE="Standard_B1ms"
-OS_DISK_SIZE=30  # GiB
+DISK_SKU="StandardSSD_LRS"
 
-# 1. Criar grupo de recursos
 az group create --name $RESOURCE_GROUP --location $LOCATION
 
-# 2. Criar a máquina virtual com HDD Standard (30 GiB)
 az vm create \
   --resource-group $RESOURCE_GROUP \
   --name $VM_NAME \
@@ -20,10 +17,30 @@ az vm create \
   --admin-username $ADMIN_USER \
   --admin-password $ADMIN_PASSWORD \
   --size $VM_SIZE \
-  --storage-sku Standard_LRS \
-  --os-disk-size-gb $OS_DISK_SIZE \
+  --storage-sku $DISK_SKU \
   --output json
 
-# 3. Abrir portas 22 (SSH) e 8080 (para a aplicação)
-az vm open-port --resource-group $RESOURCE_GROUP --name $VM_NAME --port 22
-az vm open-port --resource-group $RESOURCE_GROUP --name $VM_NAME --port 8080
+az vm open-port --resource-group $RESOURCE_GROUP --name $VM_NAME --port 8080 --priority 310
+
+--GIT
+sudo yum install git -y
+git --version
+
+--NANO
+sudo yum install nano -y
+
+--DOCKER
+# Instalar utilitários necessários
+sudo yum install -y yum-utils
+# Adicionar repositório Docker
+sudo yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+# Instalar Docker e plugins
+sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+# Iniciar o serviço Docker
+sudo systemctl start docker
+# Adicionar o usuário ao grupo docker (substitua `azureuser` se necessário)
+sudo usermod -aG docker azureuser
+# Habilitar Docker no boot
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+# ⚠️ Depois disso, **desconecte e conecte novamente via SSH** para aplicar o grupo docker
