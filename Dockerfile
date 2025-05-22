@@ -5,8 +5,11 @@ WORKDIR /app
 # Copia o projeto
 COPY . .
 
+# Dá permissão de execução para o gradlew
+#RUN chmod +x ./gradlew
+
 # Usa o wrapper para compilar com a versão correta do Gradle configurado
-RUN ./gradlew clean build -x test
+RUN gradle build
 
 # Etapa de execução com JDK 18 leve
 FROM gradle:8.7-jdk21-alpine
