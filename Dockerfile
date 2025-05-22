@@ -1,5 +1,5 @@
 # Etapa de build com Gradle 8.7 e JDK 18 (condizente com build.gradle)
-FROM gradle:8.7-jdk18 AS builder
+FROM gradle:8.7-jdk21-alpine AS builder
 WORKDIR /app
 
 # Copia o projeto
@@ -9,7 +9,7 @@ COPY . .
 RUN ./gradlew clean build -x test
 
 # Etapa de execução com JDK 18 leve
-FROM openjdk:18-jdk-alpine
+FROM gradle:8.7-jdk21-alpine
 WORKDIR /app
 
 # Copia o .jar compilado
