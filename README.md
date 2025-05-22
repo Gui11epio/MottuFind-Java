@@ -43,8 +43,15 @@ Este projeto é uma API REST desenvolvida com **Spring Boot** para o gerenciamen
 Depois clique **OK**, **APPLY** e **RUN**  
 ![image](https://github.com/user-attachments/assets/46029a42-c5be-40bc-a9d2-3e298b822e04)
 
+3. Entre na pasta resources e entre no arquivo **application.properties**.
+   
+   ![image](https://github.com/user-attachments/assets/5b43a0e1-5cd5-42d2-acf3-8fe6d5d202b6)
 
-3. Entre na main do projeto, **Sprint1Application**, e rode o programa
+4.Dentro do arquivo, altere o datasource, se necessário:
+
+![image](https://github.com/user-attachments/assets/e2134110-0527-4bfb-a51a-964daa91b6a7)
+
+5. Volte para a Main do projeto e rode ele
 
 ## 🧭 Como Utilizar a API via Swagger
 A API pode ser acessada via Swagger para fazer os testes do projeto. Disponível após subir o projeto:
