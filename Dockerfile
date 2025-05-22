@@ -1,21 +1,21 @@
-# Etapa de build com Gradle 8.7 e JDK 18 (condizente com build.gradle)
-FROM gradle:8.7-jdk21-alpine AS builder
+# Etapa de build com Gradle e JDK 17
+FROM gradle:8.7-jdk17-alpine AS builder
 WORKDIR /app
 
-# Copia o projeto
 COPY . .
 
-# Dá permissão de execução para o gradlew
-#RUN chmod +x ./gradlew
+RUN chmod +x ./gradlew
 
-# Usa o wrapper para compilar com a versão correta do Gradle configurado
-RUN gradle build
+RUN ./gradlew build -x test --no-daemon
 
-# Etapa de execução com JDK 18 leve
-FROM gradle:8.7-jdk21-alpine
+# Etapa de execução com a mesma imagem
+FROM gradle:8.7-jdk17-alpine
 WORKDIR /app
 
-# Copia o .jar compilado
+# Cria um usuário sem privilégios
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
 COPY --from=builder /app/build/libs/*.jar app.jar
 
 EXPOSE 8080
