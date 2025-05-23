@@ -53,6 +53,15 @@ Depois clique **OK**, **APPLY** e **RUN**
 
 5. Volte para a Main do projeto e rode ele
 
+## Como usar no Docker
+```bash
+docker build -t nomeImagem
+```
+
+```bash
+docker run -d -p 8080:8080 -e db.user=xxxxx -e db.passwb=xxxxx --name nomeImagem nomeContainer
+```
+
 ## 🧭 Como Utilizar a API via Swagger
 A API pode ser acessada via Swagger para fazer os testes do projeto. Disponível após subir o projeto:
 
