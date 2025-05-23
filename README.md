@@ -18,6 +18,8 @@ Este projeto é uma API REST desenvolvida com **Spring Boot** para o gerenciamen
 - Swagger/OpenAPI
 - ModelMapper
 - Spring Cache
+- Bean Validation
+- Docker
 
 ## ⚙️ Como Executar o Projeto
 
