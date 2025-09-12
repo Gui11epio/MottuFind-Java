@@ -1,0 +1,40 @@
+package br.com.fiap.MottuFind;
+
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import org.modelmapper.ModelMapper;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+//http://localhost:8080/swagger-ui/index.html#/
+
+@OpenAPIDefinition(
+        info = @Info(
+                title = "Sprint3 - API DE JAVA",
+                version = "1.0",
+                description = "Documentação da API para gerenciamento e monitoramento de motos"
+        )
+)
+
+
+@SpringBootApplication
+@EnableCaching
+public class MottuFindApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MottuFindApplication.class, args);
+    }
+
+    @Configuration
+    public class ModelMapperConfig {
+        @Bean
+        public ModelMapper modelMapper() {
+            return new ModelMapper();
+        }
+    }
+
+
+}
