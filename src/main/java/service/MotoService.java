@@ -27,7 +27,7 @@ public class MotoService {
     private final ModelMapper modelMapper;
 
     @CachePut(value = "motos", key = "#dto.placa")
-    public MotoResponse criarMoto(MotoRequest dto) {
+    public MotoResponse criar(MotoRequest dto) {
         Moto moto = modelMapper.map(dto, Moto.class);
 
         Patio patio = patioRepository.findById(dto.getPatioId())
@@ -50,7 +50,7 @@ public class MotoService {
         return modelMapper.map(saved, MotoResponse.class);
     }
 
-    public Page<MotoResponse> listarMotos(Pageable pageable) {
+    public Page<MotoResponse> listar(Pageable pageable) {
         return motoRepository.findAll(pageable)
                 .map(moto -> modelMapper.map(moto, MotoResponse.class));
     }
@@ -63,7 +63,7 @@ public class MotoService {
     }
 
     @CachePut(value = "motos", key = "#placa")
-    public MotoResponse atualizarMoto(String placa, MotoRequest dto) {
+    public MotoResponse atualizar(String placa, MotoRequest dto) {
         Moto moto = motoRepository.findById(placa)
                 .orElseThrow(() -> new EntityNotFoundException("Moto não encontrada"));
 
@@ -84,7 +84,7 @@ public class MotoService {
     }
 
     @CacheEvict(value = "motos", key = "#placa")
-    public void deletarMoto(String placa) {
+    public void deletar(String placa) {
         if (!motoRepository.existsById(placa)) {
             throw new EntityNotFoundException("Moto não encontrada");
         }

@@ -36,7 +36,7 @@ public class MotoController {
     })
     @PostMapping
     public ResponseEntity<MotoResponse> criar(@Valid @RequestBody MotoRequest dto) {
-        MotoResponse response = motoService.criarMoto(dto);
+        MotoResponse response = motoService.criar(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -49,7 +49,7 @@ public class MotoController {
     })
     @GetMapping
     public ResponseEntity<Page<MotoResponse>> listar(Pageable pageable) {
-        return ResponseEntity.ok(motoService.listarMotos(pageable));
+        return ResponseEntity.ok(motoService.listar(pageable));
     }
 
     @Operation(summary = "Retorna uma moto pela Placa")
@@ -76,7 +76,7 @@ public class MotoController {
     @PutMapping("/{placa}")
     public ResponseEntity<MotoResponse> atualizar(@PathVariable String placa,
                                                      @Valid @RequestBody MotoRequest dto) {
-        return ResponseEntity.ok(motoService.atualizarMoto(placa, dto));
+        return ResponseEntity.ok(motoService.atualizar(placa, dto));
     }
 
     @Operation(summary = "Exclui uma moto pela Placa")
@@ -88,7 +88,7 @@ public class MotoController {
     })
     @DeleteMapping("/{placa}")
     public ResponseEntity<Void> deletar(@PathVariable String placa) {
-        motoService.deletarMoto(placa);
+        motoService.deletar(placa);
         return ResponseEntity.noContent().build();
     }
 }
