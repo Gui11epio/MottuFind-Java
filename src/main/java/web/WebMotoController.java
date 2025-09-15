@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import service.MotoService;
 
 @Controller
-@RequestMapping("/web/motos")
+@RequestMapping("/motos")
 @AllArgsConstructor
 public class WebMotoController {
     private final MotoService motoService;

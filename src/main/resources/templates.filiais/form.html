@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Filial</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<h1 th:text="${#fields.hasErrors()} ? 'Corrija os erros abaixo' : ( ${filial.id} != null ? 'Editar Filial' : 'Nova Filial')"></h1>
+
+<form th:action="${filial.id} != null ? @{/filiais/{id}(id=${filial.id})} : @{/filiais}"
+      th:object="${filial}"
+      method="post">
+
+    <!-- Nome -->
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required>
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+    </div>
+
+    <!-- Cidade -->
+    <div>
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" th:field="*{cidade}" required>
+        <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
+    </div>
+
+    <!-- Endereço -->
+    <div>
+        <label for="pais">País:</label>
+        <input type="text" id="pais" th:field="*{pais}">
+        <span th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></span>
+    </div>
+
+    <div>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/filiais}">Cancelar</a>
+    </div>
+</form>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

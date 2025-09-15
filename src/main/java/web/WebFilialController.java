@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import service.FilialService;
 
 @Controller
-@RequestMapping("/web/filiais")
+@RequestMapping("/filiais")
 @AllArgsConstructor
 public class WebFilialController {
     private final FilialService filialService;
@@ -52,7 +52,7 @@ public class WebFilialController {
     public String criar(@Valid @ModelAttribute("filial") FilialRequest dto) {
         filialService.criar(dto);
 
-        return "redirect:/web/filiais";
+        return "redirect:/filiais";
     }
 
     // Formulário de edição
@@ -71,7 +71,7 @@ public class WebFilialController {
                             @Valid @ModelAttribute("filial") FilialRequest dto) {
         filialService.atualizar(id, dto);
 
-        return "redirect:/web/filiais";
+        return "redirect:/filiais";
     }
 
     // Excluir
@@ -79,7 +79,7 @@ public class WebFilialController {
     public String excluir(@PathVariable Long id) {
         filialService.deletar(id);
 
-        return "redirect:/web/filiais";
+        return "redirect:/filiais";
     }
 
 

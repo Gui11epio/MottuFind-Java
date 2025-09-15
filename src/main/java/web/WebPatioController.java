@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import service.PatioService;
 
 @Controller
-@RequestMapping("/web/patios")
+@RequestMapping("/patios")
 @AllArgsConstructor
 public class WebPatioController {
     private final PatioService patioService;
