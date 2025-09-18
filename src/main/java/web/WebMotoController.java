@@ -32,13 +32,7 @@ public class WebMotoController {
     }
 
 
-    @GetMapping("/{id}")
-    public String listarPorPlaca(@PathVariable String placa, Model model) {
-        MotoResponse moto = motoService.buscarPorPlaca(placa);
-        model.addAttribute("moto", moto);
 
-        return "motos/detail";
-    }
 
     // Formulário de cadastro
     @GetMapping("/novo")

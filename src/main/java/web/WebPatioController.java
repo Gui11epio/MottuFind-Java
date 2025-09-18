@@ -32,13 +32,7 @@ public class WebPatioController {
         return "patios/index";
     }
 
-    @GetMapping("{id}")
-    public String listarPorId(@PathVariable Long id, Model model) {
-        PatioResponse patio = patioService.buscarPorId(id);
-        model.addAttribute("patio", patio);
 
-        return "patios/detail";
-    }
 
     @GetMapping("/novo")
     public String formNovo(Model model){

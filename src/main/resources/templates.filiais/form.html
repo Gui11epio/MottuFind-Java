@@ -9,29 +9,30 @@
 
 <h1 th:text="${#fields.hasErrors()} ? 'Corrija os erros abaixo' : ( ${filial.id} != null ? 'Editar Filial' : 'Nova Filial')"></h1>
 
-<form th:action="${filial.id} != null ? @{/filiais/{id}(id=${filial.id})} : @{/filiais}"
-      th:object="${filial}"
-      method="post">
+<form th:action="@{/filiais/salvar}" method="post" th:object="${filial}">
 
     <!-- Nome -->
+
     <div>
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" th:field="*{nome}" required>
-        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+        <input type="text" id="nome" th:field="*{filial.nome}" required>
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{filial.nome}"></span>
     </div>
+
+
 
     <!-- Cidade -->
     <div>
         <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" th:field="*{cidade}" required>
-        <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
+        <input type="text" id="cidade" th:field="*{filial.cidade}" required>
+        <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{filial.cidade}"></span>
     </div>
 
-    <!-- Endereço -->
+    <!-- País -->
     <div>
         <label for="pais">País:</label>
-        <input type="text" id="pais" th:field="*{pais}">
-        <span th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></span>
+        <input type="text" id="pais" th:field="*{filial.pais}">
+        <span th:if="${#fields.hasErrors('pais')}" th:errors="*{filial.pais}"></span>
     </div>
 
     <div>

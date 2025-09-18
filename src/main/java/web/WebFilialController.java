@@ -31,14 +31,6 @@ public class WebFilialController {
     }
 
 
-    @GetMapping("/{id}")
-    public String listarPorId(@PathVariable Long id, Model model) {
-        FilialResponse filial = filialService.buscarPorId(id);
-        model.addAttribute("filial", filial);
-
-        return "filiais/detail";
-    }
-
     // Formulário de cadastro
     @GetMapping("/novo")
     public String formNovo(Model model) {
