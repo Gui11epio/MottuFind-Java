@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Filial</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<!-- <h1 th:text="${#fields.hasErrors()} ? 'Corrija os erros abaixo' : ( ${filial.id} != null ? 'Editar Filial' : 'Nova Filial')"></h1> -->
+
+<form th:action="@{/filiais/salvar}" method="post" th:object="${filial}">
+
+
+
+    <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required>
+        <!--<span th:errors="*{nome}"></span>-->
+        <!-- th:if="${#fields.hasErrors('nome')}" -->
+    </div>
+
+
+
+
+    <div>
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" th:field="*{cidade}" required>
+        <!--<span th:errors="*{cidade}"></span>-->
+        <!-- th:if="${#fields.hasErrors('cidade')}" -->
+    </div>
+
+
+    <div>
+        <label for="pais">País:</label>
+        <input type="text" id="pais" th:field="*{pais}">
+        <!--<span th:errors="*{pais}"></span>-->
+        <!-- th:if="${#fields.hasErrors('pais')}" -->
+    </div>
+
+    <div>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/filiais}">Cancelar</a>
+    </div>
+</form>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
