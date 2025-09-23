@@ -41,7 +41,7 @@ public class WebMotoController {
     }
 
     // Submeter cadastro
-    @PostMapping
+    @PostMapping("/salvar")
     public String criar(@Valid @ModelAttribute("moto") MotoRequest dto) {
         motoService.criar(dto);
 
@@ -49,7 +49,7 @@ public class WebMotoController {
     }
 
     // Formulário de edição
-    @GetMapping("/editar/{placa}")
+    @GetMapping("/{placa}/editar")
     public String formEditar(@PathVariable String placa, Model model) {
         MotoResponse moto = motoService.buscarPorPlaca(placa);
         model.addAttribute("moto", moto);
@@ -58,7 +58,7 @@ public class WebMotoController {
     }
 
     // Submeter edição
-    @PostMapping("/{id}")
+    @PostMapping("/{placa}")
     public String atualizar(@PathVariable String placa,
                             @Valid @ModelAttribute("moto") MotoRequest dto) {
         motoService.atualizar(placa, dto);
@@ -67,7 +67,7 @@ public class WebMotoController {
     }
 
     // Excluir
-    @GetMapping("/excluir/{id}")
+    @GetMapping("/{placa}/excluir")
     public String excluir(@PathVariable String placa) {
         motoService.deletar(placa);
 

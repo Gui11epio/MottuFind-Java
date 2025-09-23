@@ -38,7 +38,7 @@ public class WebPatioController {
         return "patios/form";
     }
 
-    @PostMapping("/criar")
+    @PostMapping("/salvar")
     public String criar(@Valid @ModelAttribute("patio") PatioRequest patioRequest) {
         patioService.criar(patioRequest);
 
@@ -46,7 +46,7 @@ public class WebPatioController {
     }
 
     // Formulário de edição
-    @GetMapping("/editar/{id}")
+    @GetMapping("/{id}/editar")
     public String formEditar(@PathVariable Long id, Model model) {
         PatioResponse patio = patioService.buscarPorId(id);
         model.addAttribute("patio", patio);
@@ -64,7 +64,7 @@ public class WebPatioController {
     }
 
     // Excluir
-    @GetMapping("/excluir/{id}")
+    @GetMapping("/{id}/excluir")
     public String excluir(@PathVariable Long id) {
         patioService.deletar(id);
 

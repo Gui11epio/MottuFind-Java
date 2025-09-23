@@ -41,8 +41,8 @@ public class MotoRequest {
     @Schema(example = "1", description = "ID do pátio em que a moto está cadastrada")
     private Long patioId;
 
-    @NotNull(message = "O Id do pátio é obrigatório")
-    @Positive(message = "O ID do pátio deve ser positivo.")
+    @NotNull(message = "O Id da Tag é obrigatório")
+    @Positive(message = "O ID da Tag deve ser positivo.")
     @Schema(example = "1", description = "ID da Tag em que a moto está cadastrada")
     private Long tagId;
 

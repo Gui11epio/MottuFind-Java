@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PatioResponse{
-    String nome;
-    Double largura;
-    Double comprimento;
-    Long filialId;
+    private Long id;
+    private String nome;
+    private Double largura;
+    private Double comprimento;
+    private Long filialId;
 }

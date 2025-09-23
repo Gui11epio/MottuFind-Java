@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Filial</title>
-    <link rel="stylesheet" th:href="@{/assets/css/global-styles.css}" />
+  <meta charset="UTF-8">
+  <title>Cadastro de Filial</title>
+  <link rel="stylesheet" th:href="@{/assets/css/global-styles.css}">
 </head>
 <body>
 <header th:replace="fragments/header :: header"></header>
 
-<!-- <h1 th:text="${#fields.hasErrors()} ? 'Corrija os erros abaixo' : ( ${filial.id} != null ? 'Editar Filial' : 'Nova Filial')"></h1> -->
-
 <div class="container">
-    <h2 th:text="${filial?.id} != null ? 'Editar Filial' : 'Nova Filial'"></h2>
+      <h1>Cadastro de Filial</h1>
 
-    <form th:action="@{/filiais/salvar}" method="post" th:object="${filial}">
-
+      <form th:action="${filial.id} != null ? @{/filiais/{id}(id=${filial.id})} : @{/filiais/salvar}"
+            th:object="${filial}" method="post">
+        <!-- Nome da Filial -->
         <div>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" th:field="*{nome}" required>
-            <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-
+          <label for="nome">Nome da Filial:</label>
+          <input type="text" id="nome" th:field="*{nome}" placeholder="Unidade Rio de Janeiro"/>
+          <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
         </div>
 
+        <!-- Cidade -->
         <div>
-            <label for="cidade">Cidade:</label>
-            <input type="text" id="cidade" th:field="*{cidade}" required>
-            <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
-            <!-- -->
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" th:field="*{cidade}" placeholder="Rio de Janeiro"/>
+          <span th:if="${#fields.hasErrors('cidade')}" th:errors="*{cidade}"></span>
         </div>
 
+        <!-- País -->
         <div>
-            <label for="pais">País:</label>
-            <input type="text" id="pais" th:field="*{pais}">
-            <span th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></span>
-            <!--  -->
+          <label for="pais">País:</label>
+          <input type="text" id="pais" th:field="*{pais}" placeholder="Brasil"/>
+          <span th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></span>
         </div>
 
-        <div>
-            <button type="submit">Salvar</button>
-            <a th:href="@{/filiais}">Cancelar</a>
-        </div>
-
-    </form>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/filiais}">Cancelar</a>
+      </form>
 </div>
-
-
 
 <footer th:replace="fragments/footer :: footer"></footer>
 </body>

@@ -28,9 +28,10 @@
             <td th:text="${moto.modelo}"></td>
             <td th:text="${moto.marca}"></td>
             <td th:text="${moto.status}"></td>
+            <td th:text="${moto.tagId}"></td>
             <td>
                 <a class="btn" th:href="@{|/motos/${moto.placa}/editar|}">Editar</a> |
-                <a class="btn" th:href="@{|/motos/${moto.placa}/deletar|}">Excluir</a>
+                <a class="btn" th:href="@{|/motos/${moto.placa}/excluir|}">Excluir</a>
             </td>
         </tr>
         </tbody>

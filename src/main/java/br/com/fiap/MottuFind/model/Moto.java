@@ -14,6 +14,7 @@ public class Moto {
     private String placa;
 
     private MotoModelo modelo;
+
     private String marca;
 
     @Enumerated(EnumType.STRING)

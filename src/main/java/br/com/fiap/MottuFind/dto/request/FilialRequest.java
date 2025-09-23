@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FilialRequest {
 
+    private Long id;
+
     @NotBlank(message = "O nome da filial é obrigatório.")
     @Size(max = 60, message = "O nome deve ter no máximo 60 caracteres.")
     @Pattern(
