@@ -3,38 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Motos</title>
+    <link rel="stylesheet" th:href="@{/assets/css/global-styles.css}" />
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+<header th:replace="fragments/header :: header"></header>
 
-<h1>Lista de Motos</h1>
+<div class="container">
+    <h1>Lista de Motos</h1>
 
-<a th:href="@{/motos/novo}">+ Nova Moto</a>
+    <a class="btn" th:href="@{/motos/novo}">+ Nova Moto</a>
 
-<table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-    <tr>
-        <th>Placa</th>
-        <th>Modelo</th>
-        <th>Marca</th>
-        <th>Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="moto : ${motos}">
-        <td th:text="${moto.placa}"></td>
-        <td th:text="${moto.modelo}"></td>
-        <td th:text="${moto.marca}"></td>
-        <td th:text="${moto.status}"></td>
-        <td>
-            <a th:href="@{|/motos/${moto.placa}|}">Ver</a> |
-            <a th:href="@{|/motos/${moto.placa}/editar|}">Editar</a> |
-            <a th:href="@{|/motos/${moto.placa}/deletar|}">Excluir</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Marca</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="moto : ${motos}">
+            <td th:text="${moto.placa}"></td>
+            <td th:text="${moto.modelo}"></td>
+            <td th:text="${moto.marca}"></td>
+            <td th:text="${moto.status}"></td>
+            <td>
+                <a class="btn" th:href="@{|/motos/${moto.placa}/editar|}">Editar</a> |
+                <a class="btn" th:href="@{|/motos/${moto.placa}/deletar|}">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-<div th:replace="fragments/footer :: footer"></div>
+
+
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

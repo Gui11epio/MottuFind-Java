@@ -1,0 +1,101 @@
+/* ===== Reset simples ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ===== Layout base ===== */
+body {
+  background-color: #F5F5F5;
+  color: #121212;
+  line-height: 1.6;
+}
+
+/* Header e Footer */
+header, footer {
+  background-color: #121212;
+  color: #FFFFFF;
+  padding: 1rem 2rem;
+}
+
+header h1, footer p {
+  font-weight: 600;
+  color: #00E676;
+}
+
+/* Links */
+a {
+  color: #00E676;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+a:hover {
+  color: #00B248;
+}
+
+/* Botões */
+button, .btn {
+  background-color: #00E676;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  color: #121212;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover, .btn:hover {
+  background-color: #00B248;
+  color: #FFF;
+}
+
+/* Containers de conteúdo */
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  background: #FFFFFF;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Formulários */
+form input, form select, form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #CCC;
+  border-radius: 6px;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  outline: none;
+  border-color: #00E676;
+  box-shadow: 0 0 0 2px rgba(0,230,118,0.2);
+}
+
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+table thead {
+  background-color: #121212;
+  color: #FFFFFF;
+}
+
+table th, table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid #DDD;
+  text-align: left;
+}
+
+table tr:hover {
+  background-color: #F1F1F1;
+}

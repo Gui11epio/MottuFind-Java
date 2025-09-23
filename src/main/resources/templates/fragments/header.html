@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
 <body>
-<header>
-    <div>
-        <div>
-            MottuFind
-        </div>
+<th:block th:fragment="header">
+    <header>
+        <h1>Mottu Gestão</h1>
         <nav>
-            <a th:href="@{/home}">Home</a>
-            <a th:href="@{/patios}">Pátios</a>
+            <a th:href="@{/home}">Home</a> |
+            <a th:href="@{/filiais}">Filiais</a> |
+            <a th:href="@{/patios}">Pátios</a> |
             <a th:href="@{/motos}">Motos</a>
-            <a th:href="@{/filiais}">Filiais</a>
         </nav>
-    </div>
-</header>
+    </header>
+</th:block>
 </body>
 </html>

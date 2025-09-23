@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Filiais</title>
+    <link rel="stylesheet" th:href="@{/assets/css/global-styles.css}" />
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+<header th:replace="fragments/header :: header"></header>
 
-<h1>Lista de Filiais</h1>
+<div class="container">
+    <h1>Lista de Filiais</h1>
 
-<a th:href="@{/filiais/novo}">+ Nova Filial</a>
+    <a class="btn" th:href="@{/filiais/novo}">+ Nova Filial</a>
 
-<table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Cidade</th>
-        <th>Pais</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="filial : ${filiais}">
-        <td th:text="${filial.id}"></td>
-        <td th:text="${filial.nome}"></td>
-        <td th:text="${filial.cidade}"></td>
-        <td th:text="${filial.pais}"></td>
-        <td>
-            <a th:href="@{|/filiais/${filial.id}|}">Ver</a> |
-            <a th:href="@{|/filiais/${filial.id}/editar|}">Editar</a> |
-            <a th:href="@{|/filiais/${filial.id}/deletar|}">Excluir</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Pais</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="filial : ${filiais}">
+            <td th:text="${filial.id}"></td>
+            <td th:text="${filial.nome}"></td>
+            <td th:text="${filial.cidade}"></td>
+            <td th:text="${filial.pais}"></td>
+            <td>
+                <a class="btn" th:href="@{|/filiais/${filial.id}/editar|}">Editar</a> |
+                <a class="btn" th:href="@{|/filiais/${filial.id}/deletar|}">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
-<div th:replace="fragments/footer :: footer"></div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

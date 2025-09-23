@@ -3,46 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Patios</title>
+    <link rel="stylesheet" th:href="@{/assets/css/global-styles.css}" />
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+<header th:replace="fragments/header :: header"></header>
 
 <!-- <h1 th:text="${#fields.hasErrors()} ? 'Corrija os erros abaixo' : ( ${patio.id} != null ? 'Editar Patio' : 'Novo Patio')"></h1> -->
 
-<form th:action="@{/patios/salvar}" method="post" th:object="${patio}">
+<div class="container">
+    <h2 th:text="${patio?.id} != null ? 'Editar Patio' : 'Novo Patio'"></h2>
+    <form th:action="@{/patios/salvar}" method="post" th:object="${patio}">
 
-    <!-- Nome -->
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" th:field="*{nome}" required>
+            <span th:if="${#fields.hasErrors('patio')}" th:errors="*{nome}"></span>
+            <!-- -->
+        </div>
 
-    <div>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" th:field="*{nome}" required>
-        <!--<span th:errors="*{nome}"></span>-->
-        <!-- th:if="${#fields.hasErrors('patio')}"-->
-    </div>
+        <div>
+            <label for="largura">Largura:</label>
+            <input type="text" id="largura" th:field="*{largura}" required>
+            <span th:if="${#fields.hasErrors('patio')}" th:errors="*{largura}"></span>
+            <!-- -->
+        </div>
+
+        <div>
+            <label for="comprimento">Comprimento:</label>
+            <input type="text" id="comprimento" th:field="*{comprimento}">
+            <span th:if="${#fields.hasErrors('comprimento')}" th:errors="*{comprimento}"></span>
+            <!-- -->
+        </div>
+
+        <div>
+            <button type="submit">Salvar</button>
+            <a th:href="@{/patios}">Cancelar</a>
+        </div>
+
+    </form>
+</div>
 
 
-
-    <!-- Cidade -->
-    <div>
-        <label for="largura">Largura:</label>
-        <input type="text" id="largura" th:field="*{largura}" required>
-        <!--<span th:errors="*{largura}"></span>-->
-        <!-- th:if="${#fields.hasErrors('patio')}"-->
-    </div>
-
-    <!-- Comprimento -->
-    <div>
-        <label for="comprimento">Comprimento:</label>
-        <input type="text" id="comprimento" th:field="*{comprimento}">
-        <!--<span th:errors="*{comprimento}"></span>-->
-        <!--th:if="${#fields.hasErrors('comprimento')}"-->
-    </div>
-
-    <div>
-        <button type="submit">Salvar</button>
-        <a th:href="@{/patios}">Cancelar</a>
-    </div>
-</form>
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>
