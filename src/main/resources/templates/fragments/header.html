@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head></head>
 <body>
 <th:block th:fragment="header">
@@ -10,6 +10,23 @@
             <a th:href="@{/filiais}">Filiais</a> |
             <a th:href="@{/patios}">Pátios</a> |
             <a th:href="@{/motos}">Motos</a>
+
+            <!-- Menu para usuários não logados -->
+            <span sec:authorize="isAnonymous()">
+                |
+                <a th:href="@{/login}">Login</a>
+            </span>
+
+            <!-- Menu para usuários logados -->
+            <span sec:authorize="isAuthenticated()">
+                |
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" style="background: none; border: none; color: #007bff; cursor: pointer; text-decoration: underline;">
+                        Sair
+                    </button>
+                </form>
+            </span>
+
         </nav>
     </header>
 </th:block>

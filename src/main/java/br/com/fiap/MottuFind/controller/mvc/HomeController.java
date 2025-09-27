@@ -7,12 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/home")
 @AllArgsConstructor
 public class HomeController {
 
-    @GetMapping
+    @GetMapping("/home")
     public String home(Model model) {
         return "home";
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
     }
 }

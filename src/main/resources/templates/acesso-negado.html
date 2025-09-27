@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Acesso Negado - Mottu</title>
+    <link rel="stylesheet" th:href="@{/assets/css/global-styles.css}">
+    <style>
+        .error-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+
+<div class="container">
+    <div class="error-container">
+        <h2>⛔ Acesso Negado</h2>
+        <p>Você não tem permissão para acessar esta página.</p>
+        <p><small>Contate o administrador do sistema se precisar de acesso.</small></p>
+        <a th:href="@{/home}" class="btn-back">Voltar para Home</a>
+    </div>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

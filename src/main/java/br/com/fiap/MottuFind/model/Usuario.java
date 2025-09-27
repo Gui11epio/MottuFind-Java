@@ -14,9 +14,14 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
-    private Role roles;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    private boolean ativo = true;
 }
