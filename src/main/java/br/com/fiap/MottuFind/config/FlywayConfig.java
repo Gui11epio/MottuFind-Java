@@ -13,9 +13,6 @@ import org.springframework.core.annotation.Order;
 @EnableConfigurationProperties({HibernateProperties.class, JpaProperties.class})
 public class FlywayConfig {
 
-    /**
-     * Esta configuração garante que o Flyway execute antes do JPA
-     */
     @Bean
     @Primary
     public FlywayMigrationStrategy flywayMigrationStrategy() {
