@@ -1,15 +1,14 @@
-Grupo MF (Moto Find): 
+# 📦 Sprint3
+
+Este projeto é uma API REST desenvolvida com **Spring Boot** para o gerenciamento e monitoramento de motos. Ela permite operações típicas como cadastro, listagem e controle de dados relacionados.
+
+### Grupo:
 
 Guilherme Camasmie Laiber de Jesus - 554894, 
 
 Pedro Manzo Yokoo - 556115, 
 
 Fernando Fernandes Prado - 557982
-
-
-# 📦 Sprint1 - API de Java
-
-Este projeto é uma API REST desenvolvida com **Spring Boot** para o gerenciamento e monitoramento de motos. Ela permite operações típicas como cadastro, listagem e controle de dados relacionados.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -23,12 +22,16 @@ Este projeto é uma API REST desenvolvida com **Spring Boot** para o gerenciamen
 - Spring Cache
 - Bean Validation
 - Docker
+- Flyway
+- Spring Security
+- ThymeLeaf
 
 ## ⚙️ Como Executar o Projeto
 
 ### Passos
 
-1. Clone o repositório ou extraia o conteúdo do `.zip`
+1. Clone o repositório ou extraia o conteúdo do `.zip`. **Se precisar baixar o SDK, instale do Java 17**
+   
 2. - Vá nos três pontinhos  
 ![image](https://github.com/user-attachments/assets/5efa2b64-c870-4136-a5b9-f22159c3b2db)
 
@@ -56,98 +59,121 @@ Depois clique **OK**, **APPLY** e **RUN**
 
 ![image](https://github.com/user-attachments/assets/e2134110-0527-4bfb-a51a-964daa91b6a7)
 
-5. Volte para a Main do projeto e rode ele
+5. Volte para a Main do projeto e rode ele.
 
-## Como usar no Docker
-```bash
-docker build -t nomeImagem
-```
+## Rodar as Migration
 
-```bash
-docker run -d -p 8080:8080 -e db.user=xxxxx -e db.passwb=xxxxx --name nomeImagem nomeContainer
-```
+Por já estarem criadas a única coisa que você precisa fazer é rodar o projeto, assim as tabelas vão ser criadas sozinhas. 
 
-## 🧭 Como Utilizar a API via Swagger
-A API pode ser acessada via Swagger para fazer os testes do projeto. Disponível após subir o projeto:
+**Antes faça os passos acima!!!!. É necessário uma conexão com banco para as tabelas serem criadas**
+
+## 🧭 Como Utilizar a API via o site ThymeLeaf
+A API pode ser acessada via site para fazer os testes do projeto. Disponível após subir o projeto:
 
 🔗 Acesse:
 
-http://localhost:8080/swagger-ui/index.html#/
+http://localhost:8080/home
 
 ## 🗂️ Ordem de Criação dos Recursos
-Para que a API funcione corretamente, recomenda-se seguir esta ordem ao cadastrar os dados. 
-**Nos POST já vão estar disponíveis exemplos que podem ser usados na hora da criação**:
+Essa é a ordem de criação para poder utilizar o projeto
 
-📍 Filial
+- 👥 Criação do Usuário
 
-- Endpoint: POST /api/filiais
+- 👥 Fazer Login com esse Usuário
 
-Crie uma nova filial com os dados como nome, cidade, etc.
+- 📍 Criar uma Filial
 
-- Endpoint: GET /api/filiais
+- 🚧 Criar um Pátio
 
-Pega as filiais por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort** e mude o valor de **size** caso tenha mais de uma filial cadastrada
+- 🏍️ Criar uma Moto
 
-🚧 Pátio
-
-- Endpoint: POST /api/patios
-
-Cada pátio deve estar vinculado a uma filial existente.
-
-- Endpoint: GET /api/patios
-
-Pega os patios por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort** e mude o valor de **size** caso tenha mais de um pátio cadastrado
+## Exemplos de criação
 
 
-🏍️ Moto
+### 👥 Usuário/Login
 
-- Endpoint: POST /api/motos
+**username**
+``````bash
+admin
+``````
 
-Cada moto deve estar associada a um pátio existente, que por sua vez está vinculado a uma filial.
-
-- Endpoint: GET /api/patios
-
-Pega as motos por meio de páginas. Ao testar esse GET, remova o "string" dentro do **sort** e mude o valor de **size** caso tenha mais de uma moto cadastrada
-
-
-## ✅ Validações dos Dados
-O projeto aplica diversas validações nos campos recebidos pelas requisições, garantindo integridade e consistência dos dados enviados. As validações são feitas por meio de anotações da Bean Validation (javax.validation.constraints) nas classes de entrada (DTOs), como FilialRequest, PatioRequest e MotoRequest.
-
-🔒 Validações aplicadas:
-📌 Filial
-- nome: obrigatório (@NotBlank), até 60 caracteres (@Size), permite letras, números, espaços e traços (@Pattern)
-
-- cidade: obrigatório (@NotBlank), apenas letras e espaços (@Pattern)
-
-- pais: obrigatório (@NotBlank), apenas letras e espaços (@Pattern)
-
-📌 Pátio
-- nome: obrigatório (@NotBlank), de 3 a 40 caracteres (@Size), apenas letras, números, espaços e traços (@Pattern)
-
-- largura: obrigatório (@NotNull), entre 5.0 e 500.0 metros (@DecimalMin/@DecimalMax)
-
-- comprimento: obrigatório (@NotNull), entre 5.0 e 1000.0 metros (@DecimalMin/@DecimalMax)
-
-- filialId: obrigatório (@NotNull), deve ser positivo (@Positive)
-
-📌 Moto
-- placa: obrigatório (@NotBlank), deve seguir o padrão Mercosul: ABC1D23 (@Pattern)
-
-- modelo: obrigatório (@NotNull), deve ser um dos valores do enum MotoModelo
-
-- marca: obrigatório (@NotBlank), apenas letras e espaços (@Pattern)
-
-- status: obrigatório (@NotNull), deve ser um dos valores do enum MotoStatus
-
-- patioId: obrigatório (@NotNull), deve ser positivo (@Positive)
-
-- tagId: obrigatório (@NotNull), deve ser positivo (@Positive)
+**password**
+``````bash
+$2a$10$exampleHashedPassword1
+``````
 
 
+### 📍 Filial
+
+**nome**
+```bash
+Unidade Rio de Janeiro
+```
+
+**Cidade**
+```bash
+Rio de Janeiro
+```
+
+**Pais**
+```bash
+Brasil
+```
 
 
+### 🚧 Pátio
 
+**nome**
+```bash
+Pátio Central
+````
 
+**largura**
+````bash
+100.0
+````
+
+**comprimento**
+````bash
+200.0
+````
+
+**filialId**
+````bash
+1
+````
+
+### 🏍️ Moto
+
+**placa**
+````bash
+ABC1D23
+````
+
+**modelo**
+`````bash
+SPORT
+`````
+
+**marca**
+`````bash
+Honda
+``````
+
+**status**
+``````bash
+MANUTENCAO
+``````
+
+**patioId**
+`````bash
+1
+``````
+
+**tagId**
+`````bash
+1
+``````
 
 
 
