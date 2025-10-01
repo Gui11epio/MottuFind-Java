@@ -17,6 +17,8 @@ public class FlywayConfig {
     @Primary
     public FlywayMigrationStrategy flywayMigrationStrategy() {
         return flyway -> {
+            // Corrige entradas falhas no histórico
+            flyway.repair();
             // Executa as migrações do Flyway primeiro
             flyway.migrate();
         };
