@@ -47,9 +47,10 @@ Fernando Fernandes Prado - 557982
 - Clique no ícone ao lado da pasta  
 ![image](https://github.com/user-attachments/assets/82c657b8-5f39-4746-ae3f-8a11675052d9)
 
-- Adicione "**db.user**" e "**db.passwb**" e, nos valores, coloque seu usuário e senha do Oracle DB.  
+- Adicione "**db.user**" e "**db.passwd**" e, nos valores, coloque seu usuário e senha do Oracle DB.  
 Depois clique **OK**, **APPLY** e **RUN**  
-![image](https://github.com/user-attachments/assets/46029a42-c5be-40bc-a9d2-3e298b822e04)
+<img width="600" height="611" alt="image" src="https://github.com/user-attachments/assets/09b20555-936f-4557-92b5-4c576e6032d3" />
+
 
 3. Entre na pasta resources e entre no arquivo **application.properties**.
    
